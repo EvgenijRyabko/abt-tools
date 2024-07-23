@@ -1,11 +1,5 @@
-import { GetQuestions } from './components/GetQuestions/GetQuestions';
-
-function App() {
-  return (
-    <div className="w-full h-full flex items-center justify-center">
-      <GetQuestions />
-    </div>
-  );
+function App({ children }) {
+  return <div className="w-full h-full flex items-center justify-center">{children}</div>;
 }
 
 export default App;

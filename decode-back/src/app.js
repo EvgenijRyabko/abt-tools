@@ -7,7 +7,7 @@ const app = express();
 
 app.use(cors());
 
-app.get("api/answers/:id", async (req, res) => {
+app.get("/api/answers/:id", async (req, res) => {
   const idPersonTests = req.params.id;
 
   if (!idPersonTests) res.status(400).send("ptId was not provided!");

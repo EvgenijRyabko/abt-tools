@@ -39,4 +39,23 @@ module.exports = {
 
     return res;
   },
+
+  getAllPersonsTest: async (personId) => {
+    return await knexConnection("pers_tests as pt")
+      .select("pt.id", "t.discipline as name")
+      .innerJoin("tests as t", "t.id", "pt.test_id")
+      .where({ pers_id: personId });
+  },
+
+  getPersTestById: async (ptId) => {
+    return await knexConnection("pers_tests as pt").where("id", ptId).first();
+  },
+
+  createNewPersTests: async (trx, persTestsObj) => {
+    await trx("pers_tests").insert(persTestsObj);
+  },
+
+  deletePersTests: async (trx, persTestsId) => {
+    await trx("pers_tests").delete().where("id", persTestsId);
+  },
 };
